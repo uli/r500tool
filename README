@@ -18,6 +18,9 @@ speakers and headphones automatically.
 
 It requires the DirectIO driver from http://code.coreboot.org/p/directio/
 
+r500tool includes code from DirectIO and switchaudio-osx
+(http://code.google.com/p/switchaudio-osx/)
+
 It can be run as a daemon in the background, watching the Fn-F6 and Fn-F7
 hotkeys and the headphone jack and performing the desired actions.
 
