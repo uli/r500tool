@@ -49,7 +49,7 @@ void watcher(volatile struct SRAM* sram, volatile unsigned char* sram_c)
           count = 30;
       }
       if (hotkey) usleep(10000);
-      else usleep(500000);
+      else usleep(200000);
     }
 }
 
