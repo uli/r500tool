@@ -1,8 +1,9 @@
-/* watches the headphone jack of a Toshiba Portege R500 for changes
-   and calls an applescript that changes the sound output */
-/* (C) 2009 Ulrich Hecht */
-/* Licensed under the terms of the GNU Public License v2 */
-/* Requires DirectIO driver found at http://code.coreboot.org/p/directio/ */
+/* hpjack.c
+ * watches the headphone jack of a Toshiba Portege R500 for changes
+ * and calls audio switcher to change the sound output device
+ * Copyright (c) 2009 Ulrich Hecht
+ * Licensed under the terms of the GNU Public License v2
+ */
 
 #include <unistd.h>
 #include <stdlib.h>

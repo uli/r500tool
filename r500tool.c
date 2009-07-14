@@ -1,9 +1,10 @@
-/* Control LCD backlight brightness on the Toshiba Portege R500 under OSX */
-/* Also switches sound output between speakers and headphones based on the
-   state of the headphone jack. */
-/* (c) 2009 Ulrich Hecht */
-/* Licensed under the terms of the GNU Public License v2 */
-/* Requires DirectIO driver found at http://code.coreboot.org/p/directio/ */
+/* r500tool.c
+ * Tool to control LCD backlight brightness on the Toshiba Portege R500 under
+ * OSX. Also switches sound output between speakers and headphones based on
+ * the state of the headphone jack.
+ * Copyright (c) 2009 Ulrich Hecht <ulrich.hecht@gmail.com>
+ * Licensed under the terms of the GNU Public License v2
+ */
 
 #include "darwinio.h"
 #include "hpjack.h"

@@ -1,3 +1,8 @@
+/* smbios.c
+ * Copyright (c) 2009 Ulrich Hecht <ulrich.hecht@gmail.com>
+ * Licensed under the terms of the GNU Public License v2
+ */
+
 #include "smbios.h"
 #include "darwinio.h"
 
