@@ -1,0 +1,25 @@
+==============================================================================
+WARNING: r500tool accesses hardware and memory directly and does SMBIOS
+calls. It is not very clever at it; the address of the HDA audio controller,
+for instance, is hardcoded to the value it has on my Portege R500. It may
+well activate the self-destruct mechanism on yours. Also, the general idea
+of poking around in a hardware device from userspace that is already
+controlled by a kernel driver is fishy to begin with. USE WITH EXTREME
+CAUTION!!
+
+SECURITY HOLE: The DirectIO driver allows any process access to the physical
+system memory and I/O ports. When it is loaded, all security bets are off!
+==============================================================================
+
+This tool is designed for people running Mac OS X on a Toshiba Portege R500.
+It is able to control the display brightness, turn the backlight of for
+transflective mode, and watch the headphone jack to switch between internal
+speakers and headphones automatically.
+
+It requires the DirectIO driver from http://code.coreboot.org/p/directio/
+
+It can be run as a daemon in the background, watching the Fn-F6 and Fn-F7
+hotkeys and the headphone jack and performing the desired actions.
+
+Send non-stupid questions and suggestions (preferably in the form of
+patches) to ulrich.hecht@gmail.com
