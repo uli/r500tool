@@ -12,7 +12,7 @@ system memory and I/O ports. When it is loaded, all security bets are off!
 ==============================================================================
 
 This tool is designed for people running Mac OS X on a Toshiba Portege R500.
-It is able to control the display brightness, turn the backlight of for
+It is able to control the display brightness, turn the backlight off for
 transflective mode, and watch the headphone jack to switch between internal
 speakers and headphones automatically.
 
