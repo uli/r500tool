@@ -4,7 +4,7 @@
  * Licensed under the terms of the GNU Public License v2
  */
 
-#include "smbios.h"
+#include "smi.h"
 
 /* brightness query */
 int bqc(volatile struct SRAM *sram)

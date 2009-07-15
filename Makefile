@@ -4,7 +4,7 @@ OBJECTS = audio_switch.o \
           darwinio.o \
           light.o \
           r500tool.o \
-          smbios.o \
+          smi.o \
           hpjack.o
 
 all: r500tool

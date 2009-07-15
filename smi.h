@@ -1,10 +1,10 @@
-/* smbios.h
+/* smi.h
  * Copyright (c) 2009 Ulrich Hecht <ulrich.hecht@gmail.com>
  * Licensed under the terms of the GNU Public License v2
  */
 
-#ifndef __SMBIOS_H
-#define __SMBIOS_H
+#ifndef __SMI_H
+#define __SMI_H
 
 #include <stdint.h>
 
