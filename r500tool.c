@@ -65,7 +65,7 @@ usage:
   if (strcmp(parm,"-") && strcmp(parm,"+") && strcmp(parm, "q") 
       && strcmp(parm,"ton") && strcmp(parm, "toff") && strcmp(parm, "dump")
       && strcmp(parm, "daemon") && strcmp(parm, "watch")
-      && strcmp(parm, "smb") && strcmp(parm, "hpjack")
+      && strcmp(parm, "smb") && strcmp(parm, "hpjack") && strcmp(parm, "killdvd")
       && (parm[0] < '0' || parm[0] > '9' || atoi(parm) < -1 || atoi(parm) > 100)) {
       goto usage;
   }
@@ -120,6 +120,9 @@ usage:
   else if (!strcmp(parm, "hpjack")) {
     init_watch_headphone_jack();
     printf("%d\n", read_headphone_jack());
+  }
+  else if (!strcmp(parm, "killdvd")) {
+    smbr(sram, 0xfa00, 0x3100, 0, 0, 0xb2); /* from DSDT */
   }
   else if (parm[0] == 'q') {
     printf("%d\n", bqc(sram));
