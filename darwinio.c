@@ -270,7 +270,7 @@ void *map_physical(unsigned long phys_addr, int len)
 		printf("\nError(kPrepareMap): system 0x%x subsystem 0x%x code 0x%x ",
 				err_get_system(err), err_get_sub(err), err_get_code(err));
 
-		printf("physical 0x%08x[0x%x]\n", phys_addr, len);
+		printf("physical %p[0x%x]\n", (void *)phys_addr, len);
 
 		switch (err_get_code(err)) {
 		case 0x2c2: printf("Invalid Argument.\n"); break;
@@ -293,7 +293,7 @@ void *map_physical(unsigned long phys_addr, int len)
 		printf("\nError(IOConnectMapMemory): system 0x%x subsystem 0x%x code 0x%x ",
 				err_get_system(err), err_get_sub(err), err_get_code(err));
 
-		printf("physical 0x%08x[0x%x]\n", phys_addr, len);
+		printf("physical %p[0x%x]\n", (void *)phys_addr, len);
 
 		switch (err_get_code(err)) {
 		case 0x2c2: printf("Invalid Argument.\n"); break;

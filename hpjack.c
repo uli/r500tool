@@ -56,7 +56,6 @@ uint32_t azx_readl(uint32_t reg)
 int azx_single_send_cmd(uint32_t val)
 {
   unsigned short w;
-  unsigned int i;
   int timeout = 50;
   DEBUG("%s: sending cmd 0x%x\n", __FUNCTION__, val);
   while(timeout--) {
@@ -134,6 +133,7 @@ int init_watch_headphone_jack(void)
   hda_base = map_physical(hda_base_addr, 255);
   azx_writew(ICH6_REG_IRS, azx_readw(ICH6_REG_IRS) & ~ICH6_IRS_BUSY);
   oldpresent = snd_hda_codec_read(0x15, 0, AC_VERB_GET_PIN_SENSE, 0) & 0x80000000;
+  return 0;
 }
 
 int read_headphone_jack(void)
@@ -149,7 +149,6 @@ void set_output(char *which)
 
 void watch_headphone_jack(void)
 {
-  uint32_t bits;
   int present = read_headphone_jack();
   if (present != oldpresent) {
     //DEBUG("present 0x%x\n", present);

@@ -1,4 +1,4 @@
-CFLAGS = -std=c99 -O2
+CFLAGS = -Wall -std=c99 -O2
 
 OBJECTS = audio_switch.o \
           darwinio.o \
