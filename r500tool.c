@@ -19,9 +19,9 @@ void watcher(volatile struct SRAM* sram, volatile unsigned char* sram_c)
 {
     uint8_t oldhotkey = 0;
     int count = 50;
-    init_watch_headphone_jack();
+    int hdafail = init_watch_headphone_jack();
     for(;;) {
-      watch_headphone_jack();
+      if (!hdafail) watch_headphone_jack();
       uint8_t hotkey = sram_c[HKCD];
       if (!(hotkey & 0x80) && hotkey && hotkey != oldhotkey) {
         switch (hotkey) {
@@ -118,8 +118,8 @@ usage:
     watcher(sram, sram_c);
   }
   else if (!strcmp(parm, "hpjack")) {
-    init_watch_headphone_jack();
-    printf("%d\n", read_headphone_jack());
+    if (!init_watch_headphone_jack())
+      printf("%d\n", read_headphone_jack());
   }
   else if (!strcmp(parm, "killdvd")) {
     smbr(sram, 0xfa00, 0x3100, 0, 0, 0xb2); /* from DSDT */

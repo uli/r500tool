@@ -28,7 +28,6 @@
 
 #define DEBUG(x...)
 
-unsigned long hda_base_addr = 0xffc3c000; /* massive FIXME... */
 volatile void *hda_base;
 
 int g_codec_addr = 0;	/* guessed; 15 seems to work as well */
@@ -128,8 +127,35 @@ int snd_hda_codec_write(uint32_t nid, int direct, unsigned int verb, unsigned in
 
 static int oldpresent;
 
+static unsigned long get_hda_addr(void)
+{
+  char buf[100];
+  FILE* lspci = popen("lspci -v", "r");
+  if (!lspci) return 0;
+  while (fgets(buf, 100, lspci)) {
+    if (strstr(buf, "High Definition Audio Controller")) {
+      while (fgets(buf, 100, lspci)) {
+        char *x = strstr(buf, "Memory at ");
+        if (x) {
+          x += 10;
+          x[8] = 0;
+          fclose(lspci);
+          return strtoul(x, NULL, 16);
+        }
+      }
+    }
+  }
+  fclose(lspci);
+  return 0;
+}
+
 int init_watch_headphone_jack(void)
 {
+  unsigned long hda_base_addr = get_hda_addr();
+  if (!hda_base_addr) {
+    fprintf(stderr, "Unable to find HDA base address. Do you have lspci installed?\n");
+    return 1;
+  }
   hda_base = map_physical(hda_base_addr, 255);
   azx_writew(ICH6_REG_IRS, azx_readw(ICH6_REG_IRS) & ~ICH6_IRS_BUSY);
   oldpresent = snd_hda_codec_read(0x15, 0, AC_VERB_GET_PIN_SENSE, 0) & 0x80000000;
