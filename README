@@ -1,11 +1,11 @@
 ==============================================================================
 WARNING: r500tool accesses hardware and memory directly and triggers SMM
 interrupts.  It is not very clever at it; the address of the HDA audio
-controller, for instance, is hardcoded to the value it has on my Portege
-R500.  It may well activate the self-destruct mechanism on yours.  Also, the
-general idea of poking around in a hardware device from userspace that is
-already controlled by a kernel driver is fishy to begin with.  USE WITH
-EXTREME CAUTION!!
+controller, for instance, is retrieved by parsing lspci output.  It is not
+very well tested and may well activate the self-destruct mechanism on your
+computer.  Also, the general idea of poking around in a hardware device from
+userspace that is already controlled by a kernel driver is fishy to begin
+with.  USE WITH EXTREME CAUTION!!
 
 SECURITY HOLE: The DirectIO driver allows any process access to the physical
 system memory and I/O ports. When it is loaded, all security bets are off!
@@ -17,6 +17,8 @@ transflective mode, and watch the headphone jack to switch between internal
 speakers and headphones automatically.
 
 It requires the DirectIO driver from http://code.coreboot.org/p/directio/
+To be able to query the headphone jack state, you also need to have lspci
+installed.
 
 r500tool includes code from DirectIO and switchaudio-osx
 (http://code.google.com/p/switchaudio-osx/)
