@@ -15,6 +15,15 @@
 #include <string.h>
 #include <unistd.h>
 
+#define WIRELESSAPPLET "/System/Library/StartupItems/DWLG122/MiniTaskUSB.app/Contents/MacOS/MiniTaskUSB"
+void runwirelessapplet(void)
+{
+    if (!fork()) {
+        setpgrp();
+        execl(WIRELESSAPPLET, WIRELESSAPPLET, 0);
+    }
+}
+
 void watcher(volatile struct SRAM* sram, volatile unsigned char* sram_c)
 {
     uint8_t oldhotkey = 0;
@@ -30,6 +39,9 @@ void watcher(volatile struct SRAM* sram, volatile unsigned char* sram_c)
           break;
         case HKCD_F7_BRIGHTUP:
           brighter(sram);
+          break;
+        case HKCD_F8_WIRELESS:
+          runwirelessapplet();
           break;
         default:
           fprintf(stderr, "unknown hotkey code 0x%x\n", hotkey);

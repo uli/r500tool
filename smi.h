@@ -22,6 +22,7 @@
 /* observed constants */
 #define HKCD_F6_BRIGHTDOWN 0x40
 #define HKCD_F7_BRIGHTUP 0x41
+#define HKCD_F8_WIRELESS 0x42
 
 struct SRAM {
   uint32_t ieax;
